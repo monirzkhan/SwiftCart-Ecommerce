@@ -5,18 +5,19 @@ height: 100%;
 /* The Banner image */
 #banner-container{
     height: 100%;
+    margin-bottom: -260px;
 }
 .banner-image {
 
 background-image: linear-gradient(rgba(9, 8, 8, 0.702), rgba(13, 12, 12, 0.735)), url(/Assets/banner-image.png);
- background-position: center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   height: 70%;
 }
 
-/* Place text in the middle of the image */
+
 .banner-text {
   text-align: left;
   position: absolute;
@@ -25,8 +26,5 @@ background-image: linear-gradient(rgba(9, 8, 8, 0.702), rgba(13, 12, 12, 0.735))
   color: rgb(245, 241, 241);
 }
 
-.features-div{
+
    
-    
-   
-}
