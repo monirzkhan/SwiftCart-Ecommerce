@@ -1,0 +1,26 @@
+body, html {
+    height: 100%;
+}
+/* The Banner image */
+#banner-container{
+    height: 100%;
+}
+.banner-image {
+
+background-image: linear-gradient(rgba(77, 76, 76, 0.5), rgba(13, 12, 12, 0.5)), url(/Assets/banner-image.png);
+ background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 60%;
+}
+
+/* Place text in the middle of the image */
+.banner-text {
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  
+  color: rgb(245, 241, 241);
+}
