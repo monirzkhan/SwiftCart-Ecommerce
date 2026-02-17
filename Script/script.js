@@ -28,6 +28,12 @@ const removeActive=()=>{
     categoryBtn.forEach(btn=>btn.classList.remove('active'));
     
 }
+const truncateText = (text, limit = 30) => {
+  return text.length > limit
+    ? text.slice(0, limit) + "..."
+    : text;
+};
+
 const loadByCategory=async(id)=>{
  manageSpinner(true);
  const url=`https://fakestoreapi.com/products/category/${encodeURIComponent(id)}`;
@@ -158,7 +164,7 @@ const displayAllProducts=(products)=>{
       </div>
         <div class="card-body">
          <h2 class="card-title">
-         ${product.title}
+         ${truncateText(product.title, 30)}
             </h2>
         <p class="text-bold text-2xl text-left">$ ${product.price}</p>
         <div class="card-actions justify-between">
@@ -221,8 +227,8 @@ const displayTrendingProducts=(products)=>{
        
       </div>
         <div class="card-body">
-         <h2 class="card-title">
-         ${product.title}
+         <h2 class="card-title ">
+         ${truncateText(product.title, 30)}
             </h2>
         <p class="text-bold text-2xl text-left">$ ${product.price}</p>
         <div class="card-actions justify-between">
