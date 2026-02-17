@@ -77,9 +77,7 @@ const loadAllProducts=async()=>{
 
     const res= await fetch (url);
     const data= await res.json();
-    displayAllProducts(data);
-    
-    
+    displayAllProducts(data);   
 }
 
 
@@ -130,7 +128,7 @@ const displayProductDetails=(product)=>{
 }
 const displayAllProducts=(products)=>{
     
-     const productsContainer=document.getElementById('products-container');
+    const productsContainer=document.getElementById('products-container');
     productsContainer.innerHTML='';
     
     products.forEach(product => {
@@ -173,6 +171,7 @@ const displayAllProducts=(products)=>{
 </div>
 
     `
+    
     productsContainer.append(productCard);
      
     });
