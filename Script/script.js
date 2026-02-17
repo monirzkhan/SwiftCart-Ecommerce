@@ -1,3 +1,28 @@
+
+const loadCategoriesButton=()=>{
+    const url='https://fakestoreapi.com/products/categories';
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>displayCategoriesButton(data))
+}
+const displayCategoriesButton=(categories)=>{
+const categoriesContainer=document.getElementById('product-categories');
+categoriesContainer.innerHTML=`<button class="btn py-4 bg-white shadow-sm  rounded-lg">All</button>`;
+
+categories.forEach(category=>{
+    console.log(category)
+const btnDiv=document.createElement('div');
+btnDiv.innerHTML=`
+
+<button class="btn py-4 bg-white shadow-sm rounded-lg">${category}</button>
+`
+
+categoriesContainer.append(btnDiv)
+})
+
+}
+loadCategoriesButton()
+
 const loadTrendingProducts=async()=>{
     const url='https://fakestoreapi.com/products';
 
@@ -6,7 +31,6 @@ const loadTrendingProducts=async()=>{
     displayTrendingProducts(data);
     
 }
-
 
 const displayTrendingProducts=(products)=>{
      const productTrendingContainer=document.getElementById('trending-container');
