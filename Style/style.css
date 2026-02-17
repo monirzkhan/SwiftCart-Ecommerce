@@ -26,5 +26,8 @@ background-image: linear-gradient(rgba(9, 8, 8, 0.702), rgba(13, 12, 12, 0.735))
   color: rgb(245, 241, 241);
 }
 
-
+.active{
+  background-color:#422ad5;
+  color: white;
+}
    

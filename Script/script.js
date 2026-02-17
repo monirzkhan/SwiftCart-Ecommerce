@@ -9,26 +9,40 @@ const loadCategoriesButton=()=>{
     .then(data=>displayCategoriesButton(data))
 }
 
+const removeActive=()=>{
+    const categoryBtn=document.querySelectorAll('.category-btn');
+    categoryBtn.forEach(btn=>btn.classList.remove('active'));
+    
+}
 const loadByCategory=async(id)=>{
  const url=`https://fakestoreapi.com/products/category/${encodeURIComponent(id)}`;
  const res= await fetch(url);
  const data= await res.json();
- displayAllProducts(data);
+ {
+    
+    displayAllProducts(data)
+ };
 
 }
 
 const displayCategoriesButton=(categories)=>{
 const categoriesContainer=document.getElementById('product-categories');
-categoriesContainer.innerHTML=`<button class="btn py-4 bg-white shadow-sm  rounded-lg">All</button>`;
+categoriesContainer.innerHTML=`<button href="/products.html" class="btn py-4 bg-white shadow-sm  rounded-lg category-btn active">
+
+<a href="/products.html">All</a></button>`;
 
 categories.forEach(category=>{
 const btn = document.createElement('button');
-    btn.className = "btn py-4 bg-white shadow-sm rounded-lg";
+    btn.className = "btn py-4 bg-white shadow-sm rounded-lg category-btn";
     btn.textContent = category[0].toUpperCase() + category.slice(1);
     btn.dataset.category = category;
+    btn.id=`categoryButton-${category}`;
+    
 
     btn.addEventListener("click", () => {
       loadByCategory(category);
+      removeActive();
+      btn.classList.add('active');
     });
 
     categoriesContainer.appendChild(btn);
@@ -46,18 +60,7 @@ const loadAllProducts=async()=>{
     displayAllProducts(data);
     
 }
-// {
-//     "id": 1,
-//     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-//     "price": 109.95,
-//     "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-//     "category": "men's clothing",
-//     "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
-//     "rating": {
-//         "rate": 3.9,
-//         "count": 120
-//     }
-// }
+
 
 const loadProductDetails=async(id)=>{
     const url=`https://fakestoreapi.com/products/${id}`;
@@ -124,7 +127,7 @@ const displayAllProducts=(products)=>{
         <div>
         <div class="py-2 px-4 flex justify-between">
             <div>
-                <a class="btn bg-blue-100 rounded-full text-blue-600 ">${product.category}</a>
+                <a class="btn bg-blue-100 rounded-full text-[#422ad5] ">${product.category}</a>
             </div>
              <div>
             <span class="text-yellow-500"><i class="fa-solid fa-star"></i></span>
@@ -187,7 +190,7 @@ const displayTrendingProducts=(products)=>{
         <div>
         <div class="py-2 px-4 flex justify-between">
             <div>
-                <a class="btn bg-blue-100 rounded-full text-blue-600 ">${product.category}</a>
+                <a class="btn bg-blue-100 rounded-full text-[#422ad5] ">${product.category}</a>
             </div>
              <div>
             <span class="text-yellow-500"><i class="fa-solid fa-star"></i></span>
@@ -203,7 +206,7 @@ const displayTrendingProducts=(products)=>{
             </h2>
         <p class="text-bold text-2xl text-left">$ ${product.price}</p>
         <div class="card-actions justify-between">
-        <div class="btn btn-active py-4 w-5/12 rounded-lg"><i class="fa-regular fa-eye"></i>Details</div>
+        <div onclick="loadProductDetails(${product.id})" class="btn btn-active py-4 w-5/12 rounded-lg"><i class="fa-regular fa-eye"></i>Details</div>
         <div class="btn btn-active btn-primary w-5/12 rounded-lg"><i class="fa-solid fa-cart-shopping"></i>Add</div>
         </div>
         </div>
